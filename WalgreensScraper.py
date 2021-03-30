@@ -1,4 +1,5 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 import time
@@ -9,7 +10,7 @@ def watchZipCode(zips, number, carrier, fromEmail, fromEmailPass):
     for zipCode in zips:
         hasBeenSeen[zipCode] = False
 
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get("https://www.walgreens.com/findcare/vaccination/covid-19")
     btn = driver.find_element_by_css_selector('span.btn.btn__blue')
     btn.click()
